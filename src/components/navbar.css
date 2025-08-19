@@ -1,0 +1,39 @@
+nav{
+    font-family:inconsolata;
+    background-color: #ffab40;
+    top:0;
+    padding:1%;
+    border:none ;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start
+
+}
+
+img{
+    width:50%;
+    padding:0px;
+    border-radius: 25px;
+    max-height: 100px;
+    border: 2px solid transparent; 
+}
+img:hover {
+    border: 2px solid black;
+}
+
+.MyNavbarLinks {
+    display: flex;
+    align-items: center;
+}
+
+a:hover {
+    border: 2px solid black;
+}
+
+a{
+    margin: 2%;
+    text-decoration: none;
+    color: black;
+    border: 2px solid transparent;
+    padding: 4px; 
+}
