@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './navbar.css';
 
 function MyNavbar() {
@@ -5,14 +6,19 @@ function MyNavbar() {
         <nav>
             <div className="MyNavbar">
                 <div className="MyNavbarLinks">
-
-                    <img src ="/Logo.png" alt="InvestiSmart Logo"></img>
-                    <a href="#Home">Home</a>
-                    <a href="#YourPortfolio">Your Portfolio</a>
-                    <a href="#TheMarkets">The Markets</a>
+                    <NavLink to="/" end>
+                        <img src="/Logo.png" alt="InvestiSmart Logo" />
+                    </NavLink>
+                    <NavLink to="/" end className="homeText">
+                        Home
+                    </NavLink>
+                    <NavLink to="/portfolio" className="portfolioText">
+                        Your Portfolio
+                    </NavLink>
                 </div>
             </div>
-        </nav>)
+        </nav>
+    );
 }
 
 export default MyNavbar;
