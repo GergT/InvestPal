@@ -6,7 +6,7 @@ import Portfolio from "./portfolio";
 import Dashboard from "./dashboard";
 import Login from "./login";
 import MyNavbar from "./components/navbar";
-import ProtectedRoute from "./utils/protectedRoutes";
+import Signup from "./signup";
 import ProtectedRoutes from "./utils/protectedRoutes";
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
         />
 
         <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/signup" element={<Signup setUser={setUser} />} />
       </Routes>
     </BrowserRouter>
   );
