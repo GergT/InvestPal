@@ -2,36 +2,58 @@ import React, { useState } from 'react';
 import MyNavbar from './components/navbar.js';
 import './login.css';
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+function Login({ setUser }) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simple validation example
-    if (!email || !password) {
-      setError('Please enter both email and password.');
-      return;
+    if (!username || !password) {
+        setError('Please enter both username and password.');
+        return;
     }
     setError('');
-    // TODO: Add authentication logic here
-    alert('Login submitted!');
-  };
+
+    try {
+        const res = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include", 
+            body: JSON.stringify({ username, password }),
+        });
+
+            if (!res.ok) {
+            const data = await res.json();
+            setError(data.message || "Login failed");
+            return;
+        }
+
+        // success code here
+        const data = await res.json();
+        console.log(data);
+        setUser(data.user);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        window.location.href = "/dashboard";
+
+    } catch (err) {
+        console.error(err);
+        setError("Something went wrong, try again.");
+    }
+    };
 
   return (
     <div className="LoginPage">
-      <MyNavbar />
       <div className="LoginContainer">
         <img src="/LoginLogo.png" alt="InvestiSmart Logo" className="LoginLogo" />
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email">Username:</label><br />
+            <label htmlFor="username">Username:</label><br />
             <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="text"
+              id="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               required
             />
           </div>

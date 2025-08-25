@@ -1,8 +1,10 @@
-import './portfolio.css';
+import './dashboard.css';
 import MyNavbar from './components/navbar.js';
 
-function Portfolio({ user, setUser }) {
+function Dashboard({ user, setUser }) {
     return (
+
+         
 
         <div>
             <style>
@@ -10,10 +12,10 @@ function Portfolio({ user, setUser }) {
             </style>
 
 
-            <h1>My Portfolio</h1>
-            <p>Welcome to my portfolio page!</p>
+            <h1>My Dashboard</h1>
+            <p>Welcome to my dashboard page!</p>
         </div>
     );
 }
 
-export default Portfolio;
+export default Dashboard;
