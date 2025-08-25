@@ -16,6 +16,15 @@ function MyNavbar() {
                         Your Portfolio
                     </NavLink>
                 </div>
+                <div className = "MyNavbarAuthLinks">
+                    <NavLink to="/login" className="loginText">
+                        Login
+                    </NavLink>
+                    <NavLink to="/signup" className="loginText">
+                        Sign Up
+                    </NavLink>
+                </div>
+                
             </div>
         </nav>
     );
