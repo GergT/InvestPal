@@ -1,5 +1,5 @@
 import './dashboard.css';
-import MyNavbar from './components/navbar.js';
+import FileUploader from './components/fileuploader.jsx';
 
 function Dashboard({ user, setUser }) {
     return (
@@ -12,8 +12,12 @@ function Dashboard({ user, setUser }) {
             </style>
 
 
+
+
             <h1>My Dashboard</h1>
-            <p>Welcome to my dashboard page!</p>
+            <p>Upload a file to get started and view your dashboard!</p>
+
+            <FileUploader />
         </div>
     );
 }

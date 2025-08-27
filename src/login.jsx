@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import MyNavbar from './components/navbar.js';
 import './login.css';
 
 function Login({ setUser }) {
@@ -31,10 +30,11 @@ function Login({ setUser }) {
 
         // success code here
         const data = await res.json();
+        console.log("My data returned from backend")
         console.log(data);
-        setUser(data.user);
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
         window.location.href = "/dashboard";
+        
 
     } catch (err) {
         console.error(err);

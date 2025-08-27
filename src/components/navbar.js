@@ -10,6 +10,8 @@ function MyNavbar( { user, setUser } ) {
     localStorage.removeItem("user");
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <nav>
       <div className="MyNavbar">
@@ -20,7 +22,7 @@ function MyNavbar( { user, setUser } ) {
 
         <div className="MyNavbarLinks">
 
-          {user && (
+          {token && (
             <>
               <NavLink to="/dashboard" className="dashboardText">Your Dashboard</NavLink>
               <NavLink to="/portfolio" className="portfolioText">Your Portfolio</NavLink>
@@ -30,7 +32,7 @@ function MyNavbar( { user, setUser } ) {
 
         <div className="MyNavbarAuthLinks">
           {/* Login/Signup when logged out */}
-          {!user ? (
+          {!token ? (
             <>
               <NavLink to="/login" className="loginText">Login</NavLink>
               <NavLink to="/signup" className="loginText">Sign Up</NavLink>

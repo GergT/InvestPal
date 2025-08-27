@@ -8,6 +8,7 @@ import Login from "./login";
 import MyNavbar from "./components/navbar";
 import Signup from "./signup";
 import ProtectedRoutes from "./utils/protectedRoutes";
+import PublicRoute from "./utils/publicRoute";
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("user") || null);
@@ -38,8 +39,16 @@ function App() {
           } 
         />
 
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/signup" element={<Signup setUser={setUser} />} />
+        <Route path="/login" element={
+            <PublicRoute user={user}>
+              <Login setUser={setUser} />
+            </PublicRoute>
+          } />
+        <Route path="/signup" element={
+            <PublicRoute user={user}>
+              <Signup setUser={setUser} />
+            </PublicRoute>
+          } />
       </Routes>
     </BrowserRouter>
   );
