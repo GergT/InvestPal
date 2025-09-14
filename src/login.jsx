@@ -7,39 +7,39 @@ function Login({ setUser }) {
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!username || !password) {
-        setError('Please enter both username and password.');
-        return;
-    }
-    setError('');
+      e.preventDefault();
+      if (!username || !password) {
+          setError('Please enter both username and password.');
+          return;
+      }
+      setError('');
 
-    try {
-        const res = await fetch("http://localhost:5000/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include", 
-            body: JSON.stringify({ username, password }),
-        });
+      try {
+          const res = await fetch("http://localhost:5000/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include", 
+              body: JSON.stringify({ username, password }),
+          });
 
-            if (!res.ok) {
-            const data = await res.json();
-            setError(data.message || "Login failed");
-            return;
-        }
+              if (!res.ok) {
+              const data = await res.json();
+              setError(data.message || "Login failed");
+              return;
+          }
 
-        // success code here
-        const data = await res.json();
-        console.log("My data returned from backend")
-        console.log(data);
-        localStorage.setItem("token", data.token);
-        window.location.href = "/dashboard";
-        
+          // success code here
+          const data = await res.json();
+          console.log("My data returned from backend")
+          console.log(data);
+          localStorage.setItem("token", data.token);
+          window.location.href = "/dashboard";
+          
 
-    } catch (err) {
-        console.error(err);
-        setError("Something went wrong, try again.");
-    }
+      } catch (err) {
+          console.error(err);
+          setError("Something went wrong, try again.");
+      }
     };
 
   return (

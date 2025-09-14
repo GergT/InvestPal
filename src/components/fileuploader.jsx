@@ -41,7 +41,7 @@ export default function FileUploader() {
     <div>
       <input type="file" onChange={handleFileChange} />
 
-      {file && uploadStatus !== "uploading" && <button onClick={handleUpload}>Upload</button>}
+      {file && (uploadStatus !== "uploading" || uploadStatus === "uploaded") && <button onClick={handleUpload}>Upload</button>}
     </div>
     
   );

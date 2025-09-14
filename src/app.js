@@ -11,12 +11,12 @@ import ProtectedRoutes from "./utils/protectedRoutes";
 import PublicRoute from "./utils/publicRoute";
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem("user") || null);
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
 
   return (
     <BrowserRouter>
       {/* Navbar always inside Router */}
-      <MyNavbar user={user} setUser={setUser} />
+      <MyNavbar token={token} setToken={setToken} />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
         <Route 
           path="/portfolio" 
           element={
-            <ProtectedRoutes user={user}>
+            <ProtectedRoutes token={token}>
               <Portfolio />
             </ProtectedRoutes>
           } 
@@ -33,20 +33,20 @@ function App() {
         <Route 
           path="/dashboard" 
           element={
-            <ProtectedRoutes user={user}>
+            <ProtectedRoutes token={token}>
               <Dashboard />
             </ProtectedRoutes>
           } 
         />
 
         <Route path="/login" element={
-            <PublicRoute user={user}>
-              <Login setUser={setUser} />
+            <PublicRoute token={token}>
+              <Login setToken={setToken} />
             </PublicRoute>
           } />
         <Route path="/signup" element={
-            <PublicRoute user={user}>
-              <Signup setUser={setUser} />
+            <PublicRoute token={token}>
+              <Signup setToken={setToken} />
             </PublicRoute>
           } />
       </Routes>

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './navbar.css';
 
 
-function MyNavbar( { user, setUser } ) {
+function MyNavbar( { token, setToken } ) {
 
   const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
+    setToken(null);
+    localStorage.removeItem("token");
   };
-
-  const token = localStorage.getItem("token");
 
   return (
     <nav>

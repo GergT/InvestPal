@@ -12,3 +12,8 @@ p {
     line-height: 1.5;
     color: #666;
 }
+
+table{border: solid black 2px; border-collapse: collapse;}
+th{border: solid black 2px;}
+tr{border: solid black 2px;}
+td{border: solid black 2px; padding: 10px;}
