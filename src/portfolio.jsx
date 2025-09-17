@@ -1,14 +1,15 @@
 import './portfolio.css';
 import FileUploader from './components/fileuploader.jsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
 
 function Portfolio() {
 
         const [portfolioData, setPortfolioData] = useState(null); // state for fetched data
         const token = localStorage.getItem("token");
-    
-        useEffect(() => {
-            async function portfolioFetch() {
+        const isFetched = useRef(false); // to prevent double fetch in development mode
+
+        async function portfolioFetch() {
                 try {
                     const res = await fetch("http://localhost:5000/portfolio", {
                         method: "GET",
@@ -18,16 +19,48 @@ function Portfolio() {
                     if (res.ok) {
                         const data = await res.json();
                         setPortfolioData(data); // update state
-                        console.log("My portfolio data:", data);
+                        console.log("Fetched portfolio data");
+                        renderAnalysis(data.analysis);
+
                     };
                 } catch (err) {
                     console.error("Error fetching portfolio:", err);
+
                 }
+            } 
+
+        useEffect(() => {
+            if (token && !isFetched.current) {
+                portfolioFetch();
+                isFetched.current = true;
             }
-    
-            portfolioFetch();
         }, [token]);
-    
+
+        function renderAnalysis(analysis) {
+            if (!analysis) {
+                console.log("No analysis to render");
+                return null;
+            }
+            try{
+                const parsedAnalysis = JSON.parse(analysis);
+                const analysisContainer = document.getElementById("analysis-container");
+                parsedAnalysis.forEach((actionablePoint, index) => {
+                    const actionDiv = document.createElement("div");
+                    actionDiv.className = "actionable-point";
+                    const title = document.createElement("h3");
+                    title.textContent = `${index + 1}. ${actionablePoint.title}`;
+                    const description = document.createElement("p");
+                    description.textContent = actionablePoint.description;
+                    actionDiv.appendChild(title);
+                    actionDiv.appendChild(description);
+                    analysisContainer.appendChild(actionDiv);
+                });
+                console.log("Rendered analysis");
+            }
+            catch (err) {
+                console.error("Error rendering analysis:", err);
+            }
+        }
 
     return (
 
@@ -39,17 +72,14 @@ function Portfolio() {
 
             <main>
                 {portfolioData === null && <h1>Upload a CSV file here to get started!</h1>}
-                {portfolioData === null && <FileUploader className="fileUploader" />}
+                {portfolioData === null && <FileUploader className="fileUploader" onUploadSuccess={portfolioFetch} />}
                 {portfolioData && (
                 <div>
                     <h2>{portfolioData.username}'s Portfolio</h2>
                     <table>
                     <thead>
                         <tr>
-                        <th>Code</th>
                         <th>Stock</th>
-                        <th>Units</th>
-                        <th>Price (p)</th>
                         <th>Value (£)</th>
                         <th>Cost (£)</th>
                         <th>Gain/Loss (£)</th>
@@ -59,25 +89,31 @@ function Portfolio() {
                     <tbody>
                         {portfolioData.holdings.map((h, index) => (
                         <tr key={index}>
-                            <td>{h.code}</td>
                             <td>{h.stock}</td>
-                            <td>{h.units}</td>
-                            <td>{h.pricePence}</td>
                             <td>{h.value}</td>
                             <td>{h.cost}</td>
-                            <td>{h.gainLoss}</td>
-                            <td>{h.gainLossPercent}</td>
+                            {h.gainLoss>0.0 ? <td style={{color: 'green'}}>{h.gainLoss}</td> : <td style={{color: 'red'}}>{h.gainLoss}</td>}
+                            {h.gainLossPercent>0.0 ? <td style={{color: 'green'}}>{h.gainLossPercent}</td> : <td style={{color: 'red'}}>{h.gainLossPercent}</td>}
                         </tr>
                         ))}
                     </tbody>
                     </table>
                 </div>
                 )}
+                <div  id="analysis-container"></div>
+
+
+                {/*Incase need for reuploading after 24 hours*/ }
+                {portfolioData?.lastAnalysis && new Date(portfolioData.lastAnalysis) < new Date(Date.now() - 24*60*60*1000) && (
+                    <p>Portfolio analysis is more than 24 hours old. Consider re-uploading your CSV file for an updated analysis.</p>
+                    
+                )}
+                {portfolioData?.lastAnalysis && new Date(portfolioData.lastAnalysis) < new Date(Date.now() - 24*60*60*1000) && (<FileUploader className="fileUploader" />)}
+                
             </main>
 
 
-            {portfolioData && <h1>Made any Changes to your Portfolio? Upload a fresh CSV file here!</h1>}
-            {portfolioData && <FileUploader className="fileUploader" />}
+            
         </div>
     );
 }

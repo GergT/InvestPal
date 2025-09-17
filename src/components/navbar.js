@@ -21,7 +21,7 @@ function MyNavbar( { token, setToken } ) {
 
           {token && (
             <>
-              <NavLink to="/dashboard" className="dashboardText">Your Dashboard</NavLink>
+              <NavLink to="/feed" className="dashboardText">Your Feed</NavLink>
               <NavLink to="/portfolio" className="portfolioText">Your Portfolio</NavLink>
             </>
           )}

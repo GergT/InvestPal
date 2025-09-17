@@ -26,6 +26,7 @@ function Home({ user, setUser }) {
             <p>Engage with our tools to help bring new light to your current investment strategies.</p>
           </div>
         </div>
+      <h1> THIS IS NOT FINANCIAL ADVISE. Please conduct your own research before making any investment decisions.</h1>
       </main>
 
     </div>

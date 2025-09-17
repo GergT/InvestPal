@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
-export default function FileUploader() {
+
+export default function FileUploader( { onUploadSuccess } ) {
     
     const [file,setFile] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('idle');
@@ -28,6 +29,8 @@ export default function FileUploader() {
             body: formData
           });
           setUploadStatus('uploaded');
+          onUploadSuccess();
+
         }catch (error) {
           console.error('Error uploading file:', error);
           setUploadStatus('error');
