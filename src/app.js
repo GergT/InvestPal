@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import './app.css';
 import Home from "./home";
 import Portfolio from "./portfolio";
 import Dashboard from "./dashboard";
@@ -9,6 +9,7 @@ import MyNavbar from "./components/navbar";
 import Signup from "./signup";
 import ProtectedRoutes from "./utils/protectedRoutes";
 import PublicRoute from "./utils/publicRoute";
+import Article from "./articles";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -16,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* Navbar always inside Router */}
-      <MyNavbar token={token} setToken={setToken} />
+      <MyNavbar className = "navbar" token={token} setToken={setToken} />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,10 +32,19 @@ function App() {
           } 
         />
         <Route 
-          path="/dashboard" 
+          path="/feed" 
           element={
             <ProtectedRoutes token={token}>
               <Dashboard />
+            </ProtectedRoutes>
+          } 
+        />
+
+        <Route 
+          path="/feed/:articleId" 
+          element={
+            <ProtectedRoutes token={token}>
+              <Article />
             </ProtectedRoutes>
           } 
         />

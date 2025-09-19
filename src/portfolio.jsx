@@ -1,6 +1,7 @@
 import './portfolio.css';
 import FileUploader from './components/fileuploader.jsx';
 import { useState, useEffect, useRef } from 'react';
+import { apiFetch } from './utils/api';
 
 
 function Portfolio() {
@@ -11,7 +12,7 @@ function Portfolio() {
 
         async function portfolioFetch() {
                 try {
-                    const res = await fetch("http://localhost:5000/portfolio", {
+                    const res = await apiFetch("http://localhost:5000/portfolio", {
                         method: "GET",
                         headers: { Authorization: `Bearer ${token}` }
                     });

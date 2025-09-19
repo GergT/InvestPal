@@ -19,11 +19,11 @@ function Home({ user, setUser }) {
           </div>
           <div className="pillar">
             <h2>Human Expertise</h2>
-            <p>Our team of experienced analysts offers personalized guidance and support.</p>
+            <p>Our team of experienced analysts offer interesting articles and investment decisions weekly.</p>
           </div>
           <div className="pillar">
             <h2>Interactive Analysis</h2>
-            <p>Engage with our tools to help bring new light to your current investment strategies.</p>
+            <p>Engage with our tools to help bring new light to your current investments.</p>
           </div>
         </div>
       <h1> THIS IS NOT FINANCIAL ADVISE. Please conduct your own research before making any investment decisions.</h1>

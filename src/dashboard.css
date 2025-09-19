@@ -13,3 +13,38 @@ main{
 main .fileUploader {
     align-self: center;
 }
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.article {
+    background-color: #f9f9f9;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.2s;
+}
+
+.author-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.article:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 2px solid #ffab40;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+
+}
