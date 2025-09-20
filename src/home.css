@@ -72,7 +72,59 @@ main h2 {
   flex: 1;
   margin: 0 1rem;
   padding: 1rem;
-  border: 1px solid grey;
+  border: 1px solid #ffab40;
   border-radius: 15px;
-  background-color: #f9f9f9;
+  background-color: white;
+  text-align: center;
+  transition: transform 0.2s;
+
+}
+.pillar h2 {
+  color: #ffab40;
+}
+.pillar:hover {
+  transform: scale(1.05);
+  h2 {
+    color: #FC0434;
+  }
+  border-color: #FC0434;
+
+}
+
+
+.pillar p{
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hero-image {
+  background-image: url('../public/graph-up.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 20px;
+  color: #1c1c1c; /* or white if the image is dark */
+  text-align: center;
+  position: relative;
+  border-radius: 15px;
+}
+
+.hero-image .overlay h1{
+  font-size: 3rem;
+  font-weight: bold;
+}
+#big-signup-link{
+  background-color: #ffab40;
+  color: white;
+  border: none;
+  padding: 5px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+#big-signup-link:hover{
+  background-color: #FC0434;
+  color: white;
+  transform: scale(1.1);
 }

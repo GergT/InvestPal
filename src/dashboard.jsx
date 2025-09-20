@@ -2,6 +2,7 @@ import './dashboard.css';
 import { useState, useEffect, useRef } from 'react';
 import { apiFetch } from './utils/api';
 import { Link } from 'react-router-dom';
+import nameChanger from './utils/nameChanger';
 
 const token = localStorage.getItem("token");
 
@@ -37,11 +38,7 @@ function Dashboard( ) {
         }
     }, []);
 
-    function nameChanger(name){
-        if (name === "Tom-Rood"){
-            return "Tom Rood - Co-Founder & Head Analyst";
-        }
-    } 
+
 
 
 

@@ -33,7 +33,7 @@ function Login({ setUser }) {
           console.log("My data returned from backend")
           console.log(data);
           localStorage.setItem("token", data.token);
-          window.location.href = "/dashboard";
+          window.location.href = "/feed";
           
 
       } catch (err) {

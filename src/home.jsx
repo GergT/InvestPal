@@ -6,10 +6,15 @@ function Home({ user, setUser }) {
     
     <div className="Home">
       <main>
-        <h1>Welcome to <u><span><u>I</u></span>nvesti<span><u>S</u></span>mart</u></h1>
-        <h3>We combine AI analysis and human expertise to provide you with the best investment insights.</h3>
+        <section className="hero-image">
+          
+          <div className="overlay">
+            <h1>Welcome to <u><span><u>I</u></span>nvesti<span><u>S</u></span>mart</u></h1>
+            <h3>We combine AI analysis and human expertise to provide you with the best investment insights.</h3>
+            <h3><a id="big-signup-link" href="/signup">Sign up</a> to get started or read below to find out more.</h3>
+          </div>
+        </section>
 
-        <h3><a href="/signup">Sign up</a> to get started or read below to find out more.</h3>
 
         <h1>Our <span><u>3</u></span> pillars</h1>
         <div className="pillarContainer">
