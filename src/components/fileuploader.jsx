@@ -29,7 +29,6 @@ export default function FileUploader( { onUploadSuccess } ) {
             body: formData
           });
           setUploadStatus('uploaded');
-          onUploadSuccess();
 
         }catch (error) {
           console.error('Error uploading file:', error);

@@ -3,7 +3,8 @@ h1 {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: black;
+    text-emphasis: bold;
 }
 
 
@@ -12,10 +13,40 @@ p {
     font-weight: 300;
     font-size: 14px;
     line-height: 1.5;
-    color: #666;
+    color: black;
 }
 
-table{border: solid black 2px; border-collapse: collapse;}
+table{border: solid black 2px; border-collapse: collapse; }
 th{border: solid black 2px;}
 tr{border: solid black 2px;}
 td{border: solid black 2px; padding: 10px;}
+
+.actionable-point{
+    border: solid black 1px;
+    background-color: #f9f9f9;
+
+    border-radius: 15px;
+    padding: 1%;
+    margin: 1%;
+    transition: transform 0.2s;
+
+}
+
+.actionable-point:hover{
+    border: solid #ffab40 2px;
+    transform: scale(1.05);
+    
+}
+
+#analysis-container{
+    margin: 1%;
+    margin-top: 0%;
+    padding: 1%;
+    padding-top: 0%;
+}
+
+p{color: black; font-weight: 500;}
+
+h3{
+    color: #ffab40;
+}

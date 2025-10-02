@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { apiFetch } from "./utils/api";
 import './articles.css';
 import nameChanger from "./utils/nameChanger";
+import ReactMarkdown from "react-markdown";
+
 
 function Article() {
   const { articleId } = useParams();
@@ -29,10 +31,13 @@ function Article() {
 
   return (
     <div className="article-page">
-        <h1>{article.title}</h1>
-        <p className="article-author">By {article.author}</p>
+        <div className="article-header">
+            <button onClick={() => window.history.back()} className="back-button"> &larr; Back</button>
+            <h1 id="article-title">{article.title}</h1>
+        </div>
         <div className="article-content">
-            <p>{article.content}</p>
+            <p className="article-author">By {article.author}</p>
+            <ReactMarkdown>{article.content}</ReactMarkdown>
         </div>
     </div>
   );

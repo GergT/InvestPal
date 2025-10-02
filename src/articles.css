@@ -3,13 +3,40 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-}
-.article-page h1 {
-    
     font-family: 'Inconsolata', monospace;
+}
+
+.article-page h1 {
     font-weight: bold;
     font-size: 2rem;
     line-height: 1.5;
     color: #333;
     margin-bottom: 20px;
+}
+
+.article-page p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: black;
+}
+
+.article-header {
+  display: flex;
+  align-items: center; 
+  gap: 2rem; 
+  justify-content: center;
+}
+
+.article-header button{
+    align-self: flex-start;
+}
+
+#article-title{
+    text-align: center;
+    align-self: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+
 }

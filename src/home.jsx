@@ -1,6 +1,6 @@
 import './home.css';
 
-function Home({ user, setUser }) {
+function Home() {
 
   return (
     

@@ -1,7 +1,7 @@
 import "./signup.css";
 import { useState } from "react";
 
-function Signup({ setUser }) {
+function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,7 +23,7 @@ function Signup({ setUser }) {
       const res = await fetch("http://localhost:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, csvFilePath: "" }),
+        body: JSON.stringify({ username, password}),
       });
 
       if (!res.ok) {
@@ -33,9 +33,8 @@ function Signup({ setUser }) {
       }
 
       const data = await res.json();
-      setUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      window.location.href = "/dashboard";
+      localStorage.setItem("token", data.token);
+      window.location.href = "/feed";
     } catch (err) {
       console.error(err);
       setError("Something went wrong, try again.");

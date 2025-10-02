@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.css';
 
-function Login({ setUser }) {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -12,6 +12,7 @@ function Login({ setUser }) {
           setError('Please enter both username and password.');
           return;
       }
+      
       setError('');
 
       try {
