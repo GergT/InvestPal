@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
+.inconsolata-custom {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
+nav{
+    background-color: #ffab40;
+    top:0;
+    padding:1%;
+    border:none ;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start
+
+}
+
+.LoginPage{
+    font-family:inconsolata;
+    align-items: center;
+
+}
+img{
+
+    height:200px 
+}
+
+.LoginContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border-radius: 25px;
+    padding: 1%;
+    margin: 2%;
+}
+
+.LoginContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+button{
+    font-family: inconsolata;
+    background-color: #ffab40;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 30px;
+    align-self: center;
+}

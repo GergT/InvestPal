@@ -1,0 +1,45 @@
+.article-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Inconsolata', monospace;
+}
+
+.article-page h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.article-page p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: black;
+}
+
+.article-header {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center;
+  gap: 1rem;
+}
+
+.article-header button {
+  align-self: center; /* Center the button */
+  margin-top: 1rem;
+  transition: background-color 0.2s ease-in-out;
+  
+}
+.article-header button:hover {
+  background-color: #FC0434;
+  cursor: pointer;
+}
+
+#article-title {
+  text-align: center;
+  margin: 0;
+}
+
