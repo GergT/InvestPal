@@ -15,7 +15,7 @@ function Home() {
           </div>
         </section>
 
-
+        <div className="info-section">
         <h1>Our <span><u>3</u></span> pillars</h1>
         <div className="pillarContainer">
           <div className="pillar">
@@ -31,6 +31,12 @@ function Home() {
             <p>Engage with our tools to help bring new light to your current investments.</p>
           </div>
         </div>
+      </div>
+      <div id="how-we-roll" className="info-section">
+      <h1 id="roller">How we <span>roll...</span></h1>
+      <p>Hargreaves Lansdown user? We feel your pain.</p>
+      <p>Use our AI investment analysis tools to gain deeper insights into your portfolio and pick up some tips as to where to invest next.</p>
+      </div>
       <h1> THIS IS NOT FINANCIAL ADVISE. Please conduct your own research before making any investment decisions.</h1>
       </main>
 

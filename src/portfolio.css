@@ -23,7 +23,7 @@ td{border: solid black 2px; padding: 10px;}
 
 .actionable-point{
     border: solid black 1px;
-    background-color: #f9f9f9;
+    background-color: rgb(253, 253, 253);
 
     border-radius: 15px;
     padding: 1%;

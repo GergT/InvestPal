@@ -32,8 +32,8 @@ function Article() {
   return (
     <div className="article-page">
         <div className="article-header">
-            <button onClick={() => window.history.back()} className="back-button"> &larr; Back</button>
             <h1 id="article-title">{article.title}</h1>
+            <button onClick={() => window.history.back()} className="back-button"> &larr; Back</button>
         </div>
         <div className="article-content">
             <p className="article-author">By {article.author}</p>
