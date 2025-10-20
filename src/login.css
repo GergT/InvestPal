@@ -26,9 +26,8 @@ nav{
     align-items: center;
 
 }
-img{
-
-    height:200px 
+.LoginLogo{
+    height:300px;
 }
 
 .LoginContainer{
@@ -59,4 +58,9 @@ button{
     font-size: 16px;
     margin-top: 30px;
     align-self: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: #FC0434;
 }

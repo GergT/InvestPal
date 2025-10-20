@@ -24,6 +24,7 @@ function Signup() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password}),
+        credentials: "include",
       });
 
       if (!res.ok) {
@@ -31,9 +32,6 @@ function Signup() {
         setError(data.message || "Signup failed");
         return;
       }
-
-      const data = await res.json();
-      localStorage.setItem("token", data.token);
       window.location.href = "/feed";
     } catch (err) {
       console.error(err);

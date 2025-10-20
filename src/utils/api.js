@@ -2,31 +2,26 @@ import { Navigate } from "react-router-dom";
 
 
 export async function apiFetch(url, options = {}) {
-    const token = localStorage.getItem("token");
-    const headers = options.headers || {};
-    if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-    }
+    try {
+        const headers = options.headers || {};
+        const response = await fetch(url, {
+            ...options,
+            headers: {
+                ...headers,
+            },
+            credentials: "include"
+        });
 
-    const response = await fetch(url, {
-        ...options,
-        headers: {
-            ...headers,
+        if ( response.status === 403 ||response.status === 401) {
+            console.error("Unauthorized, token");
+            return response;
         }
-    });
 
-
-
-
-    if ( response.status === 403 ||response.status === 401) {
-        localStorage.removeItem("token");      
-        console.error("Unauthorized, token removed");
-        window.location.href = "/login";
-        return;
+        return response;
     }
+    catch (error) {
+        console.error("API fetch error:", error);
+        return null;
 
-    
-
-    
-    return response;
+    }
 }

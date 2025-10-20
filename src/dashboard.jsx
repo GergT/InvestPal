@@ -4,7 +4,6 @@ import { apiFetch } from './utils/api';
 import { Link } from 'react-router-dom';
 import nameChanger from './utils/nameChanger';
 
-const token = localStorage.getItem("token");
 
 function Dashboard( ) {
     const isFetched = useRef(false); // to prevent double fetch in development mode
@@ -14,16 +13,10 @@ function Dashboard( ) {
             try {
                 const res = await apiFetch("http://localhost:5000/articles", {
                     method: "GET",
-                    headers: { Authorization: `Bearer ${token}` }
                 });
-                console.log(res.ok);
                 if (res.ok) {
                     const data =  await res.json();
-                    console.log("Fetched articles data");
-                    console.log(data);
-                    setArticles(data);
-                        
-
+                    setArticles(data);  
                 };
             } catch (err) {
                 console.error("Error fetching articles:", err);
@@ -56,7 +49,6 @@ function Dashboard( ) {
                 {articles.length === 0 ? (
                     <p>No articles available.</p>
                 ) : (
-                    console.log(articles) ||
                     articles.map((article) => (
                         <Link to={`/feed/${article._id}`} key={article._id} className="article">
                         <div key={article._id}  >
