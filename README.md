@@ -1,1 +1,1 @@
-This tool is aimed at newer investors. Utilises Gemini AI to give feedback on a Hargreaves Lansdown portfolio. Also used as a tool for my friend, an economist, to write articles and updates on his investment progress.
+A tool aimed to help new investors make more returns!
