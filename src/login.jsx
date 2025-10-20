@@ -29,11 +29,6 @@ function Login() {
               return;
           }
 
-          // success code here
-          const data = await res.json();
-          console.log("My data returned from backend")
-          console.log(data);
-          localStorage.setItem("token", data.token);
           window.location.href = "/feed";
           
 

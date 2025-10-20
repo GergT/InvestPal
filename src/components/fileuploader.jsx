@@ -1,15 +1,12 @@
 import { ChangeEvent, useState } from 'react';
-
+import { apiFetch } from '../utils/api';
+import './fileuploader.css';
 
 export default function FileUploader( { onUploadSuccess } ) {
     
     const [file,setFile] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('idle');
-    const token = localStorage.getItem("token");
-    if (!token) {
-        console.error("No token found");
-        return;
-    }
+
 
     function handleFileChange(e) {
         if (e.target.files) {
@@ -23,12 +20,12 @@ export default function FileUploader( { onUploadSuccess } ) {
         const formData = new FormData();
         formData.append('file', file);
         try{
-          await fetch("http://localhost:5000/upload-csv", {
+          await apiFetch("http://localhost:5000/upload-csv", {
             method: "POST",
-            headers: { "Authorization": `Bearer ${token}` },
             body: formData
           });
           setUploadStatus('uploaded');
+          onUploadSuccess();
 
         }catch (error) {
           console.error('Error uploading file:', error);
@@ -44,6 +41,15 @@ export default function FileUploader( { onUploadSuccess } ) {
       <input type="file" onChange={handleFileChange} />
 
       {file && (uploadStatus !== "uploading" || uploadStatus === "uploaded") && <button onClick={handleUpload}>Upload</button>}
+      {uploadStatus === 'uploading' && (
+        <div className="upload-progress">
+          <p>Uploading file...</p>
+          <div className="progress-bar">
+            <div className="progress-fill" />
+          </div>
+        </div>
+      )}
+
     </div>
     
   );

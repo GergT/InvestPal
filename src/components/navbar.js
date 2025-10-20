@@ -1,13 +1,34 @@
 import { NavLink } from 'react-router-dom';
 import './navbar.css';
+import { useEffect, useState } from 'react';
+import { apiFetch } from '../utils/api';
 
 
-function MyNavbar( { token, setToken } ) {
 
-  const handleLogout = () => {
-    setToken(null);
-    localStorage.removeItem("token");
-  };
+
+function MyNavbar( ) {
+  const [loginStatus, setLoginStatus] = useState(false);
+  async function handleLogout() {
+    setLoginStatus(false);
+    await apiFetch('http://localhost:5000/logout', {
+      method: 'POST',
+    });
+    window.location.href = '/';
+  }
+
+  useEffect(() => {
+    async function fetchToken() {
+      const loginCheck = await apiFetch('http://localhost:5000/verifyToken', {
+        method: 'POST',
+      });
+      if (loginCheck.status !== 200) {
+        setLoginStatus(false);
+      } else {
+        setLoginStatus(true);
+      }
+    }
+    fetchToken();
+  }, [setLoginStatus]);
 
   return (
     <nav>
@@ -19,7 +40,7 @@ function MyNavbar( { token, setToken } ) {
 
         <div className="MyNavbarLinks">
 
-          {token && (
+          {loginStatus && (
             <>
               <NavLink to="/feed" className="dashboardText">Your Feed</NavLink>
               <NavLink to="/portfolio" className="portfolioText">Your Portfolio</NavLink>
@@ -29,7 +50,7 @@ function MyNavbar( { token, setToken } ) {
 
         <div className="MyNavbarAuthLinks">
           {/* Login/Signup when logged out */}
-          {!token ? (
+          {!loginStatus ? (
             <>
               <NavLink to="/login" className="loginText">Login</NavLink>
               <NavLink to="/signup" className="loginText">Sign Up</NavLink>

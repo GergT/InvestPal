@@ -10,9 +10,11 @@ import Signup from "./signup";
 import ProtectedRoutes from "./utils/protectedRoutes";
 import PublicRoute from "./utils/publicRoute";
 import Article from "./articles";
+import Cookies from 'js-cookie';
+
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [token, setToken] = useState(Cookies.get('token') || null);
 
   return (
     <BrowserRouter>

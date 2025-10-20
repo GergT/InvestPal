@@ -17,12 +17,18 @@ main {
     color: black;
 
 }
+.overlay h3{
+  color: black;
+}
+.overlay u{
+  text-decoration: underline;
+}
 
 span {
   color: #ffab40;
 }
 u{
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a{
@@ -91,7 +97,6 @@ main h2 {
   transform: scale(1.05);
   h2 {
     color: #FC0434;
-    text-decoration: underline;
   }
   border-color: #FC0434;
 
@@ -170,5 +175,4 @@ nav {
 
 #roller:hover span {
   color: #FC0434;
-  text-decoration: underline;
 }
